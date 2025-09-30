@@ -25,7 +25,7 @@ public class Bubble : MonoBehaviour
         if (!platform) return;
 
         // Stop bubble movement
-        rb.linearVelocity = Vector2.zero;
+        rb.velocity = Vector2.zero;
         rb.isKinematic = true;
         trigger.enabled = false;
 
