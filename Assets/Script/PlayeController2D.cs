@@ -51,20 +51,20 @@ public class PlayerController2D : MonoBehaviour
         // jump
         if (grounded && Input.GetButtonDown("Jump"))
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
         // gravity
-        if (rb.linearVelocity.y < 0)
+        if (rb.velocity.y < 0)
             rb.gravityScale = gravity * fallMulti;
-        else if (rb.linearVelocity.y > 0 && !Input.GetButton("Jump"))
+        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
             rb.gravityScale = gravity * shortHop;
         else
             rb.gravityScale = gravity;
 
-        if (rb.linearVelocity.y < maxFall)
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, maxFall);
+        if (rb.velocity.y < maxFall)
+            rb.velocity = new Vector2(rb.velocity.x, maxFall);
 
         // flip
         if (h > 0) faceRight = true;
@@ -84,13 +84,13 @@ public class PlayerController2D : MonoBehaviour
     void FixedUpdate()
     {
         float target = h * speed;
-        float cur = rb.linearVelocity.x;
+        float cur = rb.velocity.x;
 
         float a = Mathf.Abs(target) > 0.01f ? accel : decel;
         if (!grounded) a *= airCtrl;
 
         float newSpd = Mathf.MoveTowards(cur, target, a*Time.fixedDeltaTime);
-        rb.linearVelocity = new Vector2(newSpd, rb.linearVelocity.y);
+        rb.velocity = new Vector2(newSpd, rb.velocity.y);
     }
 
     void OnDrawGizmosSelected()
