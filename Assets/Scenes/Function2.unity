@@ -415,6 +415,7 @@ MonoBehaviour:
     m_Bits: 1792
   sr: {fileID: 823694587}
   gun: {fileID: 1988064957}
+  faceRight: 1
 --- !u!4 &573781901
 Transform:
   m_ObjectHideFlags: 0
@@ -1245,7 +1246,7 @@ MonoBehaviour:
   fireKey: 323
   fireSpeed: 12
   fireCooldown: 0.25
-  spawnForwardOffset: 0.1
+  spawnForwardOffset: 1.2
 --- !u!1 &2011670575
 GameObject:
   m_ObjectHideFlags: 0

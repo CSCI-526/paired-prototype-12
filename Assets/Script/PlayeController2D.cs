@@ -29,7 +29,7 @@ public class PlayerController2D : MonoBehaviour
     Rigidbody2D rb;
     float h;
     bool grounded;
-    bool faceRight = true;
+    public bool faceRight = true;
     Vector3 gunStart;
 
     void Start()
@@ -51,20 +51,20 @@ public class PlayerController2D : MonoBehaviour
         // jump
         if (grounded && Input.GetButtonDown("Jump"))
         {
-            rb.velocity = new Vector2(rb.velocity.x, 0f);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
         // gravity
-        if (rb.velocity.y < 0)
+        if (rb.linearVelocity.y < 0)
             rb.gravityScale = gravity * fallMulti;
-        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+        else if (rb.linearVelocity.y > 0 && !Input.GetButton("Jump"))
             rb.gravityScale = gravity * shortHop;
         else
             rb.gravityScale = gravity;
 
-        if (rb.velocity.y < maxFall)
-            rb.velocity = new Vector2(rb.velocity.x, maxFall);
+        if (rb.linearVelocity.y < maxFall)
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, maxFall);
 
         // flip
         if (h > 0) faceRight = true;
@@ -84,13 +84,13 @@ public class PlayerController2D : MonoBehaviour
     void FixedUpdate()
     {
         float target = h * speed;
-        float cur = rb.velocity.x;
+        float cur = rb.linearVelocity.x;
 
         float a = Mathf.Abs(target) > 0.01f ? accel : decel;
         if (!grounded) a *= airCtrl;
 
         float newSpd = Mathf.MoveTowards(cur, target, a*Time.fixedDeltaTime);
-        rb.velocity = new Vector2(newSpd, rb.velocity.y);
+        rb.linearVelocity = new Vector2(newSpd, rb.linearVelocity.y);
     }
 
     void OnDrawGizmosSelected()

@@ -30,7 +30,7 @@ public class BubbleGun : MonoBehaviour
         Vector3 spawnPos = muzzle.position + (Vector3)(muzzle.right * spawnForwardOffset);
         GameObject bubble = Instantiate(bubblePrefab, spawnPos, muzzle.rotation);
 
-        bubble.GetComponent<Rigidbody2D>().velocity = muzzle.right * fireSpeed;
+        bubble.GetComponent<Rigidbody2D>().linearVelocity = muzzle.right * fireSpeed;
 
         if (playerColliderToIgnore != null)
         {

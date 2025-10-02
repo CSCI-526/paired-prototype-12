@@ -30,9 +30,9 @@ public class PlatformBehavior : MonoBehaviour
         yield return MoveTo(startPos, fallTime);
     }
     
-    IEnumerator MoveTo(Vector3 target, float dur)
+    IEnumerator MoveTo(Vector2 target, float dur)
     {
-        Vector3 from = transform.position;
+        Vector2 from = transform.position;
         float t = 0;
         while (t < dur)
         {

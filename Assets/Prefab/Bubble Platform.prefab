@@ -21,9 +21,21 @@ PrefabInstance:
       value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 3319122538573995349, guid: e436990698a4b974b98d84a48cbf25e3, type: 3}
+      propertyPath: m_Size.y
+      value: 0.109375
+      objectReference: {fileID: 0}
+    - target: {fileID: 3319122538573995349, guid: e436990698a4b974b98d84a48cbf25e3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: 16fcbf90903b34de2b1b3211b8eb81df, type: 3}
+      objectReference: {fileID: 7482667652216324306, guid: 09b8fa6b485484e7a860acfc59a8aa03, type: 3}
+    - target: {fileID: 3319122538573995349, guid: e436990698a4b974b98d84a48cbf25e3, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227917372993300424, guid: e436990698a4b974b98d84a48cbf25e3, type: 3}
+      propertyPath: m_BodyType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4350591830764071359, guid: e436990698a4b974b98d84a48cbf25e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -133,11 +145,11 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 0.1015625}
+    newSize: {x: 1, y: 0.109375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.1}
   m_EdgeRadius: 0

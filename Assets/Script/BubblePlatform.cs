@@ -14,12 +14,12 @@ public class BubblePlatform : MonoBehaviour
     }
 void OnTriggerEnter2D(Collider2D hit)
     {
-        if (!hit.CompareTag("Platform"))
-        {
+        // if (!hit.CompareTag("Platform"))
+        // {
             rb = GetComponent<Rigidbody2D>();
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
             
             rb.bodyType = RigidbodyType2D.Static;
-        }
+        // }
     }
 }

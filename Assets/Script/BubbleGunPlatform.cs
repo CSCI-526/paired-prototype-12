@@ -7,8 +7,14 @@ public class BubbleGunPlatform : MonoBehaviour
     public KeyCode fireKey = KeyCode.Mouse0;
     public float fireSpeed = 12f;
     public float fireCooldown = 0.25f;
-    public float spawnForwardOffset = 0.5f;
+    public float spawnForwardOffset = 1.2f;
     private float _nextFireTime;
+    private PlayerController2D player;
+
+    void Start()
+    {
+        player = GetComponentInParent<PlayerController2D>();
+    }
 
 
     // Update is called once per frame
@@ -23,9 +29,15 @@ public class BubbleGunPlatform : MonoBehaviour
     
     private void Fire()
     {
-        Vector3 spawnPos = muzzle.position + (Vector3)(muzzle.right * spawnForwardOffset);
+        // Direction depends on whether the sprite is flipped
+        float facing = (player != null && player.faceRight) ? 1f : -1f;
+        Vector2 direction = new Vector2(facing, 0f);
+        
+        // spawn platform with offset
+        Vector3 spawnPos = muzzle.position + (Vector3)(direction * Mathf.Abs(spawnForwardOffset));
         GameObject bubble = Instantiate(bubblePrefab, spawnPos, muzzle.rotation);
 
-        bubble.GetComponent<Rigidbody2D>().velocity = muzzle.right * fireSpeed;
+        Rigidbody2D rb = bubble.GetComponent<Rigidbody2D>();
+        rb.linearVelocity = direction * fireSpeed;
     }
 }
