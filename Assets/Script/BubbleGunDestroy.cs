@@ -24,15 +24,15 @@ public class BubbleGunDestroy : MonoBehaviour
     {
         Debug.Log("Fired bubble");
         if (!destroyBubblePrefab) return;
-       
+
         // spawn bubble from muzzle
-        Vector3 spawnPos = muzzle.position + (Vector3)(muzzle.right * spawnForwardOffset);
+        Vector3 spawnPos = muzzle.position + muzzle.right * spawnForwardOffset;
         GameObject bubble = Instantiate(destroyBubblePrefab, spawnPos, muzzle.rotation);
 
         Rigidbody2D rb = bubble.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            rb.linearVelocity = muzzle.right * fireSpeed; // for velocity of fired bubble
+            rb.velocity = (Vector2)(muzzle.right * fireSpeed); // for velocity of fired bubble
         }
         Destroy(bubble, bubbleLifetime); //destroy bubble after lifetime of bubble
     }

@@ -68,7 +68,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6779942881968080780, guid: e436990698a4b974b98d84a48cbf25e3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -94,5 +95,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShotBubble
   speed: 5
-  persistence: 3
+  lifetime: 3
   direction: {x: 1, y: 0}
