@@ -29,6 +29,7 @@ public class PlayerController2D : MonoBehaviour
     Rigidbody2D rb;
     float h;
     bool grounded;
+    bool respawn = false;
     public bool faceRight = true;
     Vector3 gunStart;
 
@@ -44,6 +45,10 @@ public class PlayerController2D : MonoBehaviour
 
     void Update()
     {
+        if (respawn)
+        {
+            return;
+        }
         h = Input.GetAxisRaw("Horizontal");
 
         grounded = Physics2D.OverlapCircle(groundCheck.position, checkR, groundMask);
@@ -99,4 +104,5 @@ public class PlayerController2D : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(groundCheck.position, checkR);
     }
+
 }
