@@ -472,7 +472,7 @@ MonoBehaviour:
     m_Bits: 1792
   sr: {fileID: 823694587}
   gun: {fileID: 1988064957}
-  respawnPoint: {fileID: 0}
+  respawnPoint: {fileID: 1497121724}
   fallThreshold: -10
   faceRight: 1
 --- !u!4 &573781901
@@ -775,6 +775,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8338523754610888041, guid: 7fedefbf9abd75041a7ec5f87802a16e, type: 3}
   m_PrefabInstance: {fileID: 7968361813365006028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1497121724 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4533182742839866835, guid: 6bc4b6181485aec48984205971368720, type: 3}
+  m_PrefabInstance: {fileID: 502422924}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1750397499
 GameObject:
