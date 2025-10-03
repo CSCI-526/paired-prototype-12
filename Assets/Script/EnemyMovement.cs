@@ -17,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
     {
         // calculate direction vector for enemy to current
         Vector2 direction = (current.position - transform.position).normalized;
-        rb.velocity = direction * speed; // move enemy 
+        rb.linearVelocity = direction * speed; // move enemy 
         // check if it is close to the current
         if (Vector2.Distance(transform.position, current.position) < 0.5f)
         {

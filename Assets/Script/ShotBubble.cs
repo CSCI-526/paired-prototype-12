@@ -10,7 +10,7 @@ public class ShotBubble : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = direction.normalized * speed;
+        rb.linearVelocity = direction.normalized * speed;
         Destroy(gameObject, lifetime); // destroy bubble after lifetime
     }
 

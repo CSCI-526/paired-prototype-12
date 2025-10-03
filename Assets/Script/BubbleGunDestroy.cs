@@ -32,7 +32,7 @@ public class BubbleGunDestroy : MonoBehaviour
         Rigidbody2D rb = bubble.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            rb.velocity = muzzle.right * fireSpeed; // for velocity of fired bubble
+            rb.linearVelocity = muzzle.right * fireSpeed; // for velocity of fired bubble
         }
         Destroy(bubble, bubbleLifetime); //destroy bubble after lifetime of bubble
     }

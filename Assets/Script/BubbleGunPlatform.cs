@@ -38,6 +38,6 @@ public class BubbleGunPlatform : MonoBehaviour
         GameObject bubble = Instantiate(bubblePrefab, spawnPos, muzzle.rotation);
 
         Rigidbody2D rb = bubble.GetComponent<Rigidbody2D>();
-        rb.linearVelocity = direction * fireSpeed;
+        rb.velocity = direction * fireSpeed;
     }
 }

@@ -26,10 +26,12 @@ public class PlayerController2D : MonoBehaviour
     public SpriteRenderer sr;
     public Transform gun;
 
+    // respawn
+    public Transform respawnPoint;  
+    public float fallThreshold = -10f;
     Rigidbody2D rb;
     float h;
     bool grounded;
-    bool respawn = false;
     public bool faceRight = true;
     Vector3 gunStart;
 
@@ -45,10 +47,6 @@ public class PlayerController2D : MonoBehaviour
 
     void Update()
     {
-        if (respawn)
-        {
-            return;
-        }
         h = Input.GetAxisRaw("Horizontal");
 
         grounded = Physics2D.OverlapCircle(groundCheck.position, checkR, groundMask);
@@ -83,6 +81,13 @@ public class PlayerController2D : MonoBehaviour
             Vector3 pos = gunStart;
             pos.x = faceRight ? Mathf.Abs(pos.x) : -Mathf.Abs(pos.x);
             gun.localPosition = pos;
+            gun.localRotation = faceRight ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
+        }
+
+        // respawn check
+        if (transform.position.y < fallThreshold)
+        {
+            Respawn();
         }
     }
 
@@ -94,8 +99,17 @@ public class PlayerController2D : MonoBehaviour
         float a = Mathf.Abs(target) > 0.01f ? accel : decel;
         if (!grounded) a *= airCtrl;
 
-        float newSpd = Mathf.MoveTowards(cur, target, a*Time.fixedDeltaTime);
-        rb.linearVelocity = new Vector2(newSpd, rb.linearVelocity.y);
+        float newSpd = Mathf.MoveTowards(cur, target, a * Time.fixedDeltaTime);
+        rb.velocity = new Vector2(newSpd, rb.velocity.y);
+    }
+
+    void Respawn()
+    {
+        
+            transform.position = respawnPoint.position;
+       
+
+       
     }
 
     void OnDrawGizmosSelected()
@@ -104,5 +118,4 @@ public class PlayerController2D : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(groundCheck.position, checkR);
     }
-
 }
